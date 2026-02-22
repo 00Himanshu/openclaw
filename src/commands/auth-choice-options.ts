@@ -137,6 +137,12 @@ const AUTH_CHOICE_GROUP_DEFS: {
     choices: ["synthetic-api-key"],
   },
   {
+    value: "nvidia-nim",
+    label: "NVIDIA NIM",
+    hint: "Kimi K2.5, Nemotron, Llama via NVIDIA API",
+    choices: ["nvidia-nim-api-key"],
+  },
+  {
     value: "together",
     label: "Together AI",
     hint: "API key",
@@ -225,7 +231,13 @@ const BASE_AUTH_CHOICE_OPTIONS: ReadonlyArray<AuthChoiceOption> = [
     value: "kimi-code-api-key",
     label: "Kimi Code API key (subscription)",
   },
-  { value: "synthetic-api-key", label: "Synthetic API key" },
+  { value: "synthetic-api-key", 
+    label: "Synthetic API key" },
+  {
+    value: "nvidia-nim-api-key",
+    label: "NVIDIA NIM API key",
+    hint: "Kimi K2.5, Llama 3.3, Nemotron and more via NVIDIA NIM",
+  },
   {
     value: "venice-api-key",
     label: "Venice AI API key",

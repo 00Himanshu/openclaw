@@ -3,6 +3,7 @@ export {
   SYNTHETIC_DEFAULT_MODEL_REF,
 } from "../agents/synthetic-models.js";
 export { VENICE_DEFAULT_MODEL_ID, VENICE_DEFAULT_MODEL_REF } from "../agents/venice-models.js";
+export { NVIDIA_NIM_DEFAULT_MODEL_ID, NVIDIA_NIM_DEFAULT_MODEL_REF } from "../agents/nvidia-nim-models.js";
 export {
   applyAuthProfileConfig,
   applyCloudflareAiGatewayConfig,
@@ -23,6 +24,8 @@ export {
   applyOpenrouterProviderConfig,
   applySyntheticConfig,
   applySyntheticProviderConfig,
+  applyNvidiaNimConfig,
+  applyNvidiaNimProviderConfig,
   applyTogetherConfig,
   applyTogetherProviderConfig,
   applyVeniceConfig,
@@ -66,6 +69,7 @@ export {
   setOpencodeZenApiKey,
   setOpenrouterApiKey,
   setSyntheticApiKey,
+  setNvidiaNimApiKey,
   setTogetherApiKey,
   setHuggingfaceApiKey,
   setVeniceApiKey,

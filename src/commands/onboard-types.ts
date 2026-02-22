@@ -20,6 +20,7 @@ export type AuthChoice =
   | "moonshot-api-key-cn"
   | "kimi-code-api-key"
   | "synthetic-api-key"
+  | "nvidia-nim-api-key"
   | "venice-api-key"
   | "together-api-key"
   | "huggingface-api-key"
@@ -67,6 +68,7 @@ export type AuthChoiceGroupId =
   | "opencode-zen"
   | "minimax"
   | "synthetic"
+  | "nvidia-nim"
   | "venice"
   | "qwen"
   | "together"
@@ -118,6 +120,7 @@ export type OnboardOptions = {
   xiaomiApiKey?: string;
   minimaxApiKey?: string;
   syntheticApiKey?: string;
+  nvidiaNimApiKey?: string;
   veniceApiKey?: string;
   togetherApiKey?: string;
   huggingfaceApiKey?: string;

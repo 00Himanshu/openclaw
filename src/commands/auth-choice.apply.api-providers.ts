@@ -37,6 +37,8 @@ import {
   applyOpencodeZenProviderConfig,
   applySyntheticConfig,
   applySyntheticProviderConfig,
+  applyNvidiaNimProviderConfig,
+  applyNvidiaNimConfig,
   applyTogetherConfig,
   applyTogetherProviderConfig,
   applyVeniceConfig,
@@ -53,6 +55,7 @@ import {
   KIMI_CODING_MODEL_REF,
   MOONSHOT_DEFAULT_MODEL_REF,
   SYNTHETIC_DEFAULT_MODEL_REF,
+  NVIDIA_NIM_DEFAULT_MODEL_REF,
   TOGETHER_DEFAULT_MODEL_REF,
   VENICE_DEFAULT_MODEL_REF,
   VERCEL_AI_GATEWAY_DEFAULT_MODEL_REF,
@@ -65,6 +68,7 @@ import {
   setMoonshotApiKey,
   setOpencodeZenApiKey,
   setSyntheticApiKey,
+  setNvidiaNimApiKey,
   setTogetherApiKey,
   setVeniceApiKey,
   setVercelAiGatewayApiKey,
@@ -93,6 +97,7 @@ const API_KEY_TOKEN_PROVIDER_AUTH_CHOICE: Record<string, AuthChoice> = {
   huggingface: "huggingface-api-key",
   opencode: "opencode-zen",
   qianfan: "qianfan-api-key",
+  "nvidia-nim": "nvidia-nim-api-key",
 };
 
 const ZAI_AUTH_CHOICE_ENDPOINT: Partial<
@@ -272,6 +277,29 @@ const SIMPLE_API_KEY_PROVIDER_FLOWS: Partial<Record<AuthChoice, SimpleApiKeyProv
     applyProviderConfig: applySyntheticProviderConfig,
     normalize: (value) => String(value ?? "").trim(),
     validate: (value) => (String(value ?? "").trim() ? undefined : "Required"),
+  },
+  "nvidia-nim-api-key": {
+    provider: "nvidia-nim",
+    profileId: "nvidia-nim:default",
+    expectedProviders: ["nvidia-nim"],
+    envLabel: "NVIDIA_NIM_API_KEY",
+    promptMessage: "Enter NVIDIA NIM API key",
+    setCredential: setNvidiaNimApiKey,
+    defaultModel: NVIDIA_NIM_DEFAULT_MODEL_REF,
+    applyDefaultConfig: applyNvidiaNimConfig,
+    applyProviderConfig: applyNvidiaNimProviderConfig,
+    noteDefault: NVIDIA_NIM_DEFAULT_MODEL_REF,
+    noteMessage: [
+      "NVIDIA NIM provides hosted inference for Kimi K2.5, Llama, Nemotron and more.",
+      "Get your API key at: https://build.nvidia.com",
+      "Keys start with 'nvapi-'",
+    ].join("\n"),
+    noteTitle: "NVIDIA NIM",
+    normalize: (value) => String(value ?? "").trim(),
+    validate: (value) =>
+      String(value ?? "").trim().startsWith("nvapi-")
+        ? undefined
+        : 'NVIDIA NIM API keys start with "nvapi-"',
   },
 };
 
